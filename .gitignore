@@ -1,0 +1,7 @@
+# Never commit wallet keys
+*.key
+agent_wallet.key
+.env
+
+__pycache__/
+*.pyc

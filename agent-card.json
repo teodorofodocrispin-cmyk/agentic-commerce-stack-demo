@@ -1,0 +1,40 @@
+{
+  "schema_version": "v1",
+  "name": "Agentic Commerce Stack Demo Agent",
+  "description": "Reference autonomous agent that pays and chains the LATAM Agentic Commerce Stack (TrustBoost -> Intelica -> VeraData) via x402. Proves the end-to-end M2M loop works.",
+  "version": "1.0.0",
+  "category": "reference-agent",
+  "url": "https://github.com/teodorofodocrispin-cmyk/agentic-commerce-stack-demo",
+  "depends_on": {
+    "trustboost": {
+      "name": "TrustBoost PII Sanitizer",
+      "agent_card": "https://api.trustboost.dev/.well-known/agent-card.json",
+      "pricing": "https://api.trustboost.dev/pricing",
+      "role": "PII sanitization BEFORE any text reaches an LLM"
+    },
+    "intelica": {
+      "name": "Intelica Competitive Intelligence",
+      "agent_card": "https://api.intelica.dev/.well-known/agent-card.json",
+      "pricing": "https://api.intelica.dev/pricing",
+      "role": "competitive/market intelligence BEFORE strategic decisions"
+    },
+    "veradata": {
+      "name": "VeraData Verified LATAM Data",
+      "agent_card": "https://api.veradata.dev/.well-known/agent-card.json",
+      "pricing": "https://api.veradata.dev/pricing",
+      "role": "verify LATAM counterparty via sanctions/entity screening"
+    }
+  },
+  "pipeline": [
+    "TrustBoost /sanitize/quick",
+    "Intelica /intel",
+    "VeraData /sanctions"
+  ],
+  "payment": {
+    "protocol": "x402",
+    "asset": "USDC",
+    "network": "eip155:8453",
+    "total_cost_usdc": 0.11
+  },
+  "license": "MIT"
+}
