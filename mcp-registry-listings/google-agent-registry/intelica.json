@@ -1,0 +1,32 @@
+{
+  "apiVersion": "agentregistry.googleapis.com/v1",
+  "kind": "Service",
+  "metadata": {
+    "name": "intelica-mcp",
+    "annotations": {
+      "agentregistry.googleapis.com/visibility": "PUBLIC",
+      "agentregistry.googleapis.com/description": "Competitive intelligence for autonomous AI agents — moat scoring, competitor mapping, decision-trust layer."
+    }
+  },
+  "spec": {
+    "displayName": "Intelica — Competitive Intelligence",
+    "description": "Analyzes any company or market, returns structured JSON with moat scoring (IMI), competitor mapping, executive brief, strategic recommendations against a graph of 3,600+ companies. Decision-trust layer: every analysis auditable and traceable. x402 pay-per-call on Base/Solana, AP2-compatible.",
+    "endpoint": {
+      "uri": "https://api.intelica.dev/mcp",
+      "protocol": "MCP"
+    },
+    "agentCard": {
+      "name": "intelica",
+      "version": "4.5.7",
+      "capabilities": {
+        "tools": {
+          "analyze_competitor": "Single competitor analysis with IMI moat score",
+          "batch_analyze": "Up to 10 competitors in one call"
+        }
+      },
+      "paymentProtocols": ["x402", "ap2"],
+      "networks": ["eip155:8453", "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"],
+      "compliance": ["EU_AI_ACT_ART12"]
+    }
+  }
+}

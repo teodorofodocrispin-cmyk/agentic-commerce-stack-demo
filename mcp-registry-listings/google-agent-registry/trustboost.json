@@ -1,0 +1,32 @@
+{
+  "apiVersion": "agentregistry.googleapis.com/v1",
+  "kind": "Service",
+  "metadata": {
+    "name": "trustboost-mcp",
+    "annotations": {
+      "agentregistry.googleapis.com/visibility": "PUBLIC",
+      "agentregistry.googleapis.com/description": "PII sanitizer for autonomous AI agents — redacts PII before it reaches LLMs. EU AI Act compliant."
+    }
+  },
+  "spec": {
+    "displayName": "TrustBoost — PII Sanitizer",
+    "description": "Redacts emails, phone numbers, national IDs, private keys, financial data from text before LLMs. EN/ES(LA)/PT. EU AI Act Art.4/13 compliant with immutable sanitization hash. Pay-per-call $0.01 USDC on Base/Solana via x402, or 149 USDC prepaid bundle. AP2-compatible.",
+    "endpoint": {
+      "uri": "https://api.trustboost.dev/mcp",
+      "protocol": "MCP"
+    },
+    "agentCard": {
+      "name": "trustboost",
+      "version": "2.7.0",
+      "capabilities": {
+        "tools": {
+          "sanitize": "Redact PII from text",
+          "sanitize_quick": "Pay-per-call x402 entry point"
+        }
+      },
+      "paymentProtocols": ["x402", "ap2"],
+      "networks": ["eip155:8453", "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"],
+      "compliance": ["EU_AI_ACT_ART4", "EU_AI_ACT_ART13"]
+    }
+  }
+}

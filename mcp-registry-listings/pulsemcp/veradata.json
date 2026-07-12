@@ -1,0 +1,19 @@
+{
+  "name": "veradata",
+  "description": "Verified Latin American data for autonomous AI agents via x402 micropayments. Sanctions screening (OFAC+UN+EU+UK, 59k+ entries), entity enrichment (RUES/CNPJ/RFC), central bank rates (DTF/TIIE/Selic/TRM/UF), business registry, and AI-powered market context. EU AI Act Art.13 compliant audit trails. $0.02–$0.10 USDC per call on Base and Solana. No API key required.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/teodorofodocrispin-cmyk/veradata-public"
+  },
+  "homepage": "https://api.veradata.dev",
+  "mcp_server": {
+    "type": "http",
+    "url": "https://api.veradata.dev/mcp"
+  },
+  "tags": ["latam", "compliance", "enrichment", "financial-data", "x402", "sanctions", "kyb", "kyc"],
+  "payment": {
+    "protocol": "x402",
+    "networks": ["eip155:8453", "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"],
+    "ap2_compatible": true
+  }
+}

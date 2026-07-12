@@ -1,0 +1,19 @@
+{
+  "name": "intelica",
+  "description": "Competitive intelligence API for autonomous AI agents. Analyzes any company or market and returns structured JSON with moat scoring (IMI), competitor mapping, executive brief, and strategic recommendations — benchmarked against a real-time graph of 3,600+ companies. Decision-trust layer: every analysis is auditable, traceable, and improvable. $0.05 USDC per call on Base and Solana via x402. No API key required for agents.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/teodorofodocrispin-cmyk/Intelica-docs"
+  },
+  "homepage": "https://api.intelica.dev",
+  "mcp_server": {
+    "type": "http",
+    "url": "https://api.intelica.dev/mcp"
+  },
+  "tags": ["competitive-intelligence", "market-analysis", "decision-support", "x402", "agentic-commerce", "moat-scoring"],
+  "payment": {
+    "protocol": "x402",
+    "networks": ["eip155:8453", "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"],
+    "ap2_compatible": true
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "trustboost",
+  "description": "PII sanitizer for autonomous AI agents. Redacts emails, phone numbers, national IDs, private keys, and financial data from text before it reaches LLMs. Supports EN, ES (LATAM), and PT. EU AI Act Art.4/Art.13 compliant with immutable sanitization hash. Pay-per-call $0.01 USDC on Base and Solana via x402, or 149 USDC prepaid bundle (10k calls). No API key required.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/teodorofodocrispin-cmyk/trustboost-api"
+  },
+  "homepage": "https://api.trustboost.dev",
+  "mcp_server": {
+    "type": "http",
+    "url": "https://api.trustboost.dev/mcp"
+  },
+  "tags": ["pii", "sanitization", "privacy", "compliance", "x402", "llm-safety", "eu-ai-act"],
+  "payment": {
+    "protocol": "x402",
+    "networks": ["eip155:8453", "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"],
+    "ap2_compatible": true
+  }
+}
