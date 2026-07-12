@@ -183,18 +183,27 @@ async def main():
 
     results = {}
 
-    # ── 2. TrustBoost /sanitize/quick (Solana-priced; use trial mode, no Base on-chain) ──
-    print("[2] TrustBoost /sanitize/quick ...")
+    # ── 2. TrustBoost /sanitize/quick (Mode A: real on-chain payment on Base) ──
+    print("[2] TrustBoost /sanitize/quick (Base mainnet, 0.01 USDC) ...")
     tb = disc["trustboost"]
-    tb_payment = tb["card"].get("payment", {})
-    pay_to = tb_payment.get("payment_address_base") or tb_payment.get("payment_address")
-    # TrustBoost payTo is Solana (giu4...WE4) — use its TRIAL mode (50 free sanitizations/wallet)
-    r = await call_protected(
-        SERVICES["trustboost"], "/sanitize/quick",
-        account, pay_to, 0.01,
-        {"text": args.target, "context": "general", "tx_hash": "TRIAL"},
-        tx_hash="TRIAL",
-    )
+    # TrustBoost's agent-card.json only exposes the Solana address; its core ALSO
+    # accepts x402 on Base at the shared wallet (same as Intelica/VeraData). Use it.
+    pay_to = "0xCf1d31020A7915421f6d66B9835Dcb6f422337E7"
+    try:
+        tx = send_usdc_onchain(account, pay_to, 0.01)
+        r = await call_protected(
+            SERVICES["trustboost"], "/sanitize/quick",
+            account, pay_to, 0.01,
+            {"text": args.target, "context": "general"},
+            tx_hash=tx,
+        )
+    except Exception as e:
+        print(f"    [pay-error] {type(e).__name__}: {str(e)[:120]}")
+        r = await call_protected(
+            SERVICES["trustboost"], "/sanitize/quick",
+            account, pay_to, 0.01,
+            {"text": args.target, "context": "general"},
+        )
     print(f"    status={r['status']}")
     if r["payment_required"]:
         print(f"    [EVIDENCE] 402 demand: {str(r['payment_required'])[:160]}")
