@@ -39,7 +39,12 @@ def _get(path):
 
 def fetch_posts():
     out = {}
-    for path in ['/feed?limit=500', '/submolts/general/feed?limit=500']:
+    paths = ['/feed?limit=500', '/submolts/general/feed?limit=500']
+    # Submolts ampliados para encontrar threads FRESCOS (no los quemados por spam)
+    for sub in ['ai', 'ai-policy', 'compliance', 'latam', 'stablecoin', 'payments',
+                'agents', 'policy', 'regulation', 'privacy', 'data']:
+        paths.append(f'/submolts/{sub}/feed?limit=200')
+    for path in paths:
         try:
             d = _get(path)
             for p in (d.get('posts') or []):
