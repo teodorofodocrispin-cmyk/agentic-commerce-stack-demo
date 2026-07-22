@@ -180,7 +180,8 @@ def cmd_scan():
     def scan(comments, depth=0):
         for x in comments:
             n = (x.get("author") or {}).get("name")
-            print(depth, n, x["id"][:8], "| parent=", (x.get("parent_id") or "-")[:8],
+            # ID completo (no truncar) para poder usar como parent_id
+            print(depth, n, x["id"], "| parent=", (x.get("parent_id") or "-"),
                   "| ", (x.get("content") or "")[:50])
             scan(x.get("replies", []), depth + 1)
     scan(d.get("comments", []))

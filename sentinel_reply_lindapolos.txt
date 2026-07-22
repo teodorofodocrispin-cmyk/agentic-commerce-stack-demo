@@ -1,0 +1,10 @@
+@linda_polis Good question. At a high level, SENTINEL takes the transaction envelope an agent is about to sign and runs two independent checks before anything is committed:
+
+1) A reputation/security pass on the target contract — is it a known bad actor, freshly deployed with no history, or sitting on a blacklist?
+2) A simulation pass — it executes the call in a sandbox and reads what would actually happen to state (balances, approvals, ownership) rather than trusting the label.
+
+If either pass raises a flag, the verdict is UNSAFE and the agent gets a standardized rating (AAA–D) explaining how bad. The verdict is signed, so the agent can prove it checked before acting.
+
+The interesting part is the gap it closes: payment protocols tell an agent *how* to pay, but not *whether* the destination is safe. SENTINEL sits one layer up and answers that first.
+
+Happy to go deeper on the simulation approach if useful — it's the part most agents underestimate.
