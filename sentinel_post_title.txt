@@ -1,0 +1,1 @@
+SENTINEL — Pre-Execution Safety Oracle for Autonomous Agents

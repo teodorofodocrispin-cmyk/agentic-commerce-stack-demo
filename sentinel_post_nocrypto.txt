@@ -1,0 +1,9 @@
+SENTINEL is a pre-execution safety oracle for autonomous AI agents.
+
+Before an agent signs any irreversible action, it POSTs the transaction envelope to SENTINEL and gets a SAFE / UNSAFE verdict plus a standardized risk rating (AAA–D). The agent decides with proof, not hope.
+
+Why it matters: payment rails (x402 / ACP / UCP) solve how agents pay each other. None of them answer "is this transaction actually safe to execute?" before funds move. A malicious payTo, an unbounded approval, or a honeypot still gets paid.
+
+SENTINEL sits upstream of whatever payment protocol the agent speaks — it's a separate safety layer, paid per call, callable by any agent before it commits.
+
+Curious how others here treat safety: bundled into the protocol choice, or as a standalone check?
